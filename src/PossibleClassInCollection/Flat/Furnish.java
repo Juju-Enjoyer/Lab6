@@ -2,9 +2,10 @@ package PossibleClassInCollection.Flat;
 
 import Exceptions.IllegalKeyException;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public enum Furnish implements ParseEnum{
+public enum Furnish implements ParseEnum, Serializable {
     DESIGNER,
     NONE,
     FINE,

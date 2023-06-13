@@ -1,5 +1,6 @@
 package Command.CollectionManager;
 
+import Command.CommandList.Insert.Insert;
 import Command.CommandProcessor.Command;
 import Command.Parse.Filler;
 import Command.Parse.FlatJsonConverter;
@@ -8,8 +9,9 @@ import Exceptions.IllegalKeyException;
 import Exceptions.IllegalValueException;
 import Exceptions.NoSuchCommandException;
 import PossibleClassInCollection.Flat.*;
-import com.google.gson.Gson;
 
+
+import javax.management.StringValueExp;
 import java.io.*;
 import java.nio.file.AccessDeniedException;
 import java.time.ZonedDateTime;
@@ -114,15 +116,17 @@ public class CollectionManager implements Serializable{
         }
     }
 
-    public void help() {
+    public String help() {
         System.out.println("Help");
-        for (Command cmd : commands.values()) System.out.println(cmd.getName() + ": " + cmd.getDescription());
+        LinkedList<String> helpMessage = new LinkedList<>();
+        for (Command cmd : commands.values()) helpMessage.add(cmd.getName() + ": " + cmd.getDescription());
+    return "Список доступных команд";
     }
 
-    public boolean exit() {
-        System.out.println("Bye");
-        boolean result = false;
-        return result;
+    public String exit() {
+//        System.out.println("Bye");
+//        boolean result = false;
+        return "Bye";
     }
 
     public void fullCommadsList(Map<String, Command> commands) {
@@ -131,14 +135,18 @@ public class CollectionManager implements Serializable{
     }
 
 
-    public void insert(long key) throws IllegalValueException, NoSuchElementException{
-        Filler pr = new Filler();
-        Flat flat = pr.parser(getMaxId() + 1);
+    public String insert(Insert insert) throws  NoSuchElementException{
         try {
-            flats.put(key, flat);
+            if (flats.containsKey(insert.getArgument())){
+                return "уже есть квартира с таким номером";
+        }
+            flats.put(Long.valueOf(insert.getArgument()), insert.getFlat());
         }catch (NullPointerException e){
             System.err.println("Zalupa");
         }
+        show();
+        return "Упешно добавлено";
+
     }
     public void insert(long key, BufferedReader reader) throws IOException,NoSuchElementException {
         flats.put(key,scriptFill(reader,getMaxId()+1));

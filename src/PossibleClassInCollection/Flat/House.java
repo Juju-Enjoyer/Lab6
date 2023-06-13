@@ -1,6 +1,8 @@
 package PossibleClassInCollection.Flat;
 
-public class House implements Comparable<House>{
+import java.io.Serializable;
+
+public class House implements Comparable<House>, Serializable {
     private String name; //Поле не может быть null
     private int year; //Максимальное значение поля: 431, Значение поля должно быть больше 0
     private int numberOfFloors; //Значение поля должно быть больше 0

@@ -1,29 +1,29 @@
-package Command.CommandList.Exit;
+package Command.CommandList.Help;
 
 import Command.CollectionManager.CollectionManager;
 import Command.CommandProcessor.Command;
 
 import java.io.Serializable;
 
-public class Exit implements Command, Serializable {
+public class Help implements Command, Serializable {
     private CollectionManager cm;
-    public Exit (CollectionManager cm){
+    public Help(CollectionManager cm){
         this.cm=cm;
     }
-    public Exit (){
+    public Help(){
+
     }
     @Override
     public String getName(){
-        return "EXIT";
+        return "HELP";
     }
     @Override
     public String getDescription(){
-        return "завершить программу (без сохранения в файл)";
+        return "вывести справку по доступным командам";
     }
 
     @Override
     public void setArgument(String argument) {
-
     }
 
     @Override
@@ -31,22 +31,19 @@ public class Exit implements Command, Serializable {
         return null;
     }
 
+    @Override
     public CollectionManager getCm() {
         return cm;
     }
 
+    @Override
     public void setCm(CollectionManager cm) {
-        this.cm = cm;
+        this.cm=cm;
     }
 
     @Override
     public String execute(String args) {
-//        boolean  res =
-//
-//        return res;
-        cm.exit();
-        return "Bye";
+
+        return cm.help();
     }
-
-
 }

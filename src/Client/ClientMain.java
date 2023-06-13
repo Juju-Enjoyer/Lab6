@@ -2,10 +2,13 @@ package Client;
 
 import Command.CollectionManager.CollectionManager;
 
+import Command.CommandList.CommandWithFlat;
 import Command.CommandList.Exit.Exit;
 
+import Command.CommandList.Help.Help;
 import Command.CommandList.Insert.Insert;
 
+import Command.CommandList.kostyl;
 import Command.CommandProcessor.Command;
 import Exceptions.IllegalKeyException;
 import Exceptions.IllegalValueException;
@@ -43,16 +46,17 @@ public class ClientMain {
         commands.put(cmd.getName(), cmd);
         cmd = new Insert();
         commands.put(cmd.getName(), cmd);
+        cmd = new Help();
+        commands.put(cmd.getName(),cmd);
 
 
 
-        boolean result = true;
+       Command command = new kostyl();
 
         Scanner scan = new Scanner(System.in);
-        while (result) {
+        while (true) {
             String commandWithOutArgs = "";
             String args = "";
-            Command command;
             try {
                 String[] commandLine = scan.nextLine().split(" ");
                 commandWithOutArgs = commandLine[0];
@@ -69,8 +73,13 @@ public class ClientMain {
             }else {
                 command =commands.get(commandWithOutArgs.toUpperCase());
             }
+            if (command.getClass()==Exit.class){
+                break;
+            }
             command.setArgument(args);
-
+            if (command instanceof CommandWithFlat){
+                ((CommandWithFlat) command).setFlat();
+            }
 
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(bos);
@@ -79,8 +88,12 @@ public class ClientMain {
             DatagramPacket datagramPacket = new DatagramPacket(buffer, buffer.length,inetAddress,1234);
             datagramSocket.send(datagramPacket);
             datagramSocket.receive(datagramPacket);
-            result = true;
+            command = new kostyl();
             String message = new String(datagramPacket.getData(),0,datagramPacket.getLength());
+            System.out.println(message);
+            datagramSocket.receive(datagramPacket);
+            command = new kostyl();
+            message = new String(datagramPacket.getData(),0,datagramPacket.getLength());
             System.out.println(message);
         }
     }

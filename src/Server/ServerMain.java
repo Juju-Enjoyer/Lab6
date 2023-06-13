@@ -4,6 +4,7 @@ import Command.CollectionManager.CollectionManager;
 
 import Command.CommandList.Exit.Exit;
 
+import Command.CommandList.Help.Help;
 import Command.CommandList.Insert.Insert;
 
 import Command.CommandProcessor.Command;
@@ -34,8 +35,8 @@ public class ServerMain {
         commands.put(cmd.getName(), cmd);
         cmd = new Insert(cm);
         commands.put(cmd.getName(), cmd);
-
-        commands.put(cmd.getName(), cmd);
+        cmd = new Help();
+        commands.put(cmd.getName(),cmd);
         cm.fullCommadsList(commands);
     }
    private DatagramSocket datagramSocket;
@@ -54,7 +55,7 @@ public class ServerMain {
         cm.fullCommadsList(commands);
         while (result){
             try{
-                System.out.println("Я сервер");
+
                 DatagramPacket datagramPacket = new DatagramPacket(buffer,buffer.length);
                 datagramSocket.receive(datagramPacket);
                 InetAddress inetAddress = datagramPacket.getAddress();
@@ -74,12 +75,17 @@ public class ServerMain {
                 if ((commands.get(command.getName().toUpperCase()) == null) | (command.getName().equals(""))) {
                     throw new NoSuchCommandException();
                 }
-                command.execute(command.getArgument());
+                String result = command.execute(command.getArgument());
                 buffer = new byte[65507];
                 String str =command.getName()+" execute";
                 buffer = str.getBytes();
                 datagramPacket = new DatagramPacket(buffer, buffer.length, inetAddress,port);
                 datagramSocket.send(datagramPacket);
+                str =result;
+                buffer = str.getBytes();
+                datagramPacket = new DatagramPacket(buffer, buffer.length, inetAddress,port);
+                datagramSocket.send(datagramPacket);
+
 
 
 
@@ -105,6 +111,7 @@ public class ServerMain {
     public static void main(String[] args) throws SocketException {
         DatagramSocket socket = new DatagramSocket(1234);
         ServerMain server = new ServerMain(socket);
+        System.out.println("Я сервер");
         server.execute();
     }
 

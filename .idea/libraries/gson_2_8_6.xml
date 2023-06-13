@@ -6,6 +6,7 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$USER_HOME$/.ideaLibSources/gson-2.8.6-sources.jar!/" />
+      <root url="file://$PROJECT_DIR$/src" />
     </SOURCES>
   </library>
 </component>

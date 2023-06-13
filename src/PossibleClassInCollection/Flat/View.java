@@ -2,9 +2,10 @@ package PossibleClassInCollection.Flat;
 
 import Exceptions.IllegalKeyException;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public enum View {
+public enum View implements  Serializable {
     YARD,
     BAD,
     NORMAL,

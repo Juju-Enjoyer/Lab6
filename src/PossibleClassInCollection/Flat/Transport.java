@@ -2,9 +2,10 @@ package PossibleClassInCollection.Flat;
 
 import Exceptions.IllegalKeyException;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public enum Transport implements ParseEnum {
+public enum Transport implements ParseEnum, Serializable {
     FEW,
     NONE,
     LITTLE,

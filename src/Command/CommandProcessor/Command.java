@@ -15,5 +15,5 @@ public interface Command<T> {
     CollectionManager getCm();
     void setCm(CollectionManager cm);
 
-    boolean execute(String args) throws NoSuchCommandException, IllegalKeyException, IllegalValueException;
+    String execute(String args) throws NoSuchCommandException, IllegalKeyException, IllegalValueException;
 }

@@ -1,7 +1,9 @@
 package Command.CommandList.Insert;
 
 import Command.CollectionManager.CollectionManager;
+import Command.CommandList.CommandWithFlat;
 import Command.CommandProcessor.Command;
+import Command.Parse.Filler;
 import Exceptions.IllegalKeyException;
 import Exceptions.IllegalValueException;
 import Exceptions.NoSuchCommandException;
@@ -10,7 +12,7 @@ import PossibleClassInCollection.Flat.Flat;
 import java.io.Serializable;
 import java.util.NoSuchElementException;
 
-public class Insert implements Command, Serializable {
+public class Insert implements Command, Serializable, CommandWithFlat {
     private CollectionManager cm;
     private String argument;
     private Flat flat;
@@ -24,6 +26,7 @@ public class Insert implements Command, Serializable {
         //filler
         this.argument= String.valueOf(argument);
     }
+
     @Override
     public String getArgument(){
         return  argument;
@@ -46,15 +49,25 @@ public class Insert implements Command, Serializable {
     }
 
     @Override
-    public boolean execute(String args) throws NoSuchElementException, NumberFormatException, IllegalKeyException, IllegalValueException,NoSuchCommandException {
+    public String execute(String args) throws NoSuchElementException, NumberFormatException, IllegalKeyException, IllegalValueException,NoSuchCommandException {
         if (args.isEmpty()){
             throw new NoSuchCommandException();
         }
-        else if (cm.getCollection().containsKey(Long.valueOf(args))){
-            throw new IllegalKeyException("уже есть квартира с таким номером\"");
-        }
-        int key = Integer.parseInt(args);
-        cm.insert(key);
-        return true;
+//        else if (cm.getCollection().containsKey(Long.valueOf(args))){
+//            throw new IllegalKeyException("уже есть квартира с таким номером\"");
+//        }
+
+        return cm.insert(this);
+    }
+
+    @Override
+    public void setFlat() throws IllegalValueException {
+        Filler pr = new Filler();
+        flat = pr.parser(Long.parseLong(argument));
+    }
+
+    @Override
+    public Flat getFlat() {
+        return flat;
     }
 }

@@ -1,6 +1,8 @@
 package PossibleClassInCollection.Flat;
 
-public class Coordinates {
+import java.io.Serializable;
+
+public class Coordinates implements Serializable {
     private long x;
     private Integer y; //Значение поля должно быть больше -470, Поле не может быть null
 
