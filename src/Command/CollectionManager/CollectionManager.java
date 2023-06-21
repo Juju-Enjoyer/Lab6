@@ -41,8 +41,9 @@ public class CollectionManager implements Serializable{
 
         Scanner scFile = new Scanner(System.in);
         String line = arg;
+        if (arg.isEmpty()){
         while (line.trim().isEmpty()){
-            System.out.println("Задайте рабочий файл так в строчку был задан не очень хоороший файл");
+            System.out.println("Задайте рабочий файл так в строчку был задан не очень хороший файл");
             line = scFile.nextLine();
         }
         File file = new File(line);
@@ -59,6 +60,7 @@ public class CollectionManager implements Serializable{
                 file = new File(scFile.nextLine());
             }
             this.workFile = file;
+        }
         }
     }
 

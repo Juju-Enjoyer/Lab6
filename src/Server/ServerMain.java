@@ -153,7 +153,13 @@ public class ServerMain {
         DatagramSocket socket = new DatagramSocket(1237);
         ServerMain server = new ServerMain(socket);
         System.out.println("Я сервер");
-        server.execute(args[0]);
+        if(args.length==0) {
+            String file = "";
+            server.execute(file);
+        }
+        else {
+            server.execute(args[0]);
+        }
     }
 }
 

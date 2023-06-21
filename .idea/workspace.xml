@@ -10,44 +10,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f256e8f-dd0a-431e-bdaa-9805d29d7946" name="Changes" comment="Initial commit">
-      <changelist_data name="Juju-Enjoyr" email="368938@niuitmo.ru" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Lab6Client_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Lab6_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/CommandList/Clear/Clear.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/CommandList/CountLessThanNumberOfRooms/CountLessThanNumberOfRooms.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/CommandList/ExecuteScript/ExecuteScript.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/CommandList/ExecuteScript/ExecuteScriptNewEra.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/CommandList/History/History.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/CommandList/Info/Info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/CommandList/RemoveAnyByNumberOfRooms/RemoveAnyByNumberOfRooms.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/CommandList/RemoveGreater/RemoveGreater.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/CommandList/RemoveKey/RemoveKey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/CommandList/RemoveLower/RemoveLower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/CommandList/Save/Save.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/CommandList/Show/Show.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/CommandList/Sort/Sort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/CommandList/UpdateById/UpdateById.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Command/ListCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="6f256e8f-dd0a-431e-bdaa-9805d29d7946" name="Changes" comment="lab6 final version">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/CommandList/CommandWithFlat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/CommandList/CommandWithFlat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/CommandList/Exit/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/CommandList/Exit/Exit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/CommandList/Insert/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/CommandList/Insert/Insert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/CommandProcessor/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/CommandProcessor/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/CommandProcessor/CommandProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/CommandProcessor/CommandProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/Parse/Filler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/Parse/Filler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/Parse/FlatJsonConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/Parse/FlatJsonConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/Parse/Reader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/Parse/ZonedDateTimeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/Parse/ZonedDateTimeAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exceptions/IllegalKeyException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/IllegalKeyException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exceptions/IllegalValueException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/IllegalValueException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exceptions/InvalidInputException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/InvalidInputException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exceptions/NoSuchCommandException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/NoSuchCommandException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +82,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/nic/IdeaProjects/Lab6v2/src/Command/CommandList&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nic/IdeaProjects/Lab6v2&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -211,6 +176,15 @@
       <workItem from="1686639545357" duration="4209000" />
       <workItem from="1686692755287" duration="599000" />
     </task>
+    <task id="LOCAL-00001" summary="lab6 final version">
+      <option name="closed" value="true" />
+      <created>1687362116672</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1687362116672</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +205,8 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="lab6 final version" />
+    <option name="LAST_COMMIT_MESSAGE" value="lab6 final version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -738,17 +713,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>712</line>
+          <line>714</line>
           <option name="timeStamp" value="130" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>713</line>
+          <line>715</line>
           <option name="timeStamp" value="131" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>714</line>
+          <line>716</line>
           <option name="timeStamp" value="132" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -908,307 +883,307 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>198</line>
+          <line>204</line>
           <option name="timeStamp" value="168" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>199</line>
+          <line>205</line>
           <option name="timeStamp" value="169" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>200</line>
+          <line>206</line>
           <option name="timeStamp" value="170" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>201</line>
+          <line>207</line>
           <option name="timeStamp" value="171" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>202</line>
+          <line>208</line>
           <option name="timeStamp" value="172" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>203</line>
+          <line>209</line>
           <option name="timeStamp" value="173" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>204</line>
+          <line>210</line>
           <option name="timeStamp" value="174" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>206</line>
+          <line>212</line>
           <option name="timeStamp" value="175" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>207</line>
+          <line>213</line>
           <option name="timeStamp" value="176" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>208</line>
+          <line>214</line>
           <option name="timeStamp" value="177" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>209</line>
+          <line>215</line>
           <option name="timeStamp" value="178" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>211</line>
+          <line>217</line>
           <option name="timeStamp" value="179" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>210</line>
+          <line>216</line>
           <option name="timeStamp" value="180" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>213</line>
+          <line>219</line>
           <option name="timeStamp" value="181" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>214</line>
+          <line>220</line>
           <option name="timeStamp" value="184" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>215</line>
+          <line>221</line>
           <option name="timeStamp" value="185" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>216</line>
+          <line>222</line>
           <option name="timeStamp" value="186" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>217</line>
+          <line>223</line>
           <option name="timeStamp" value="187" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>219</line>
+          <line>225</line>
           <option name="timeStamp" value="188" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>220</line>
+          <line>226</line>
           <option name="timeStamp" value="189" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>221</line>
+          <line>227</line>
           <option name="timeStamp" value="190" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>222</line>
+          <line>228</line>
           <option name="timeStamp" value="191" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>226</line>
+          <line>232</line>
           <option name="timeStamp" value="192" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>227</line>
+          <line>233</line>
           <option name="timeStamp" value="193" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>228</line>
+          <line>234</line>
           <option name="timeStamp" value="194" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>229</line>
+          <line>235</line>
           <option name="timeStamp" value="195" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>231</line>
+          <line>237</line>
           <option name="timeStamp" value="196" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>233</line>
+          <line>239</line>
           <option name="timeStamp" value="197" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>234</line>
+          <line>240</line>
           <option name="timeStamp" value="198" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>236</line>
+          <line>242</line>
           <option name="timeStamp" value="199" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>237</line>
+          <line>243</line>
           <option name="timeStamp" value="200" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>239</line>
+          <line>245</line>
           <option name="timeStamp" value="201" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>240</line>
+          <line>246</line>
           <option name="timeStamp" value="202" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>241</line>
+          <line>247</line>
           <option name="timeStamp" value="203" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>242</line>
+          <line>248</line>
           <option name="timeStamp" value="204" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>244</line>
+          <line>250</line>
           <option name="timeStamp" value="205" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>243</line>
+          <line>249</line>
           <option name="timeStamp" value="206" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>248</line>
+          <line>254</line>
           <option name="timeStamp" value="207" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>250</line>
+          <line>256</line>
           <option name="timeStamp" value="208" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>251</line>
+          <line>257</line>
           <option name="timeStamp" value="209" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>252</line>
+          <line>258</line>
           <option name="timeStamp" value="210" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>255</line>
+          <line>261</line>
           <option name="timeStamp" value="213" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>256</line>
+          <line>262</line>
           <option name="timeStamp" value="214" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>257</line>
+          <line>263</line>
           <option name="timeStamp" value="215" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>259</line>
+          <line>265</line>
           <option name="timeStamp" value="216" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>260</line>
+          <line>266</line>
           <option name="timeStamp" value="217" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>261</line>
+          <line>267</line>
           <option name="timeStamp" value="218" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>262</line>
+          <line>268</line>
           <option name="timeStamp" value="219" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>264</line>
+          <line>270</line>
           <option name="timeStamp" value="220" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>265</line>
+          <line>271</line>
           <option name="timeStamp" value="221" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>267</line>
+          <line>273</line>
           <option name="timeStamp" value="222" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>266</line>
+          <line>272</line>
           <option name="timeStamp" value="223" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>268</line>
+          <line>274</line>
           <option name="timeStamp" value="224" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>271</line>
+          <line>277</line>
           <option name="timeStamp" value="225" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>270</line>
+          <line>276</line>
           <option name="timeStamp" value="226" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>272</line>
+          <line>278</line>
           <option name="timeStamp" value="227" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>273</line>
+          <line>279</line>
           <option name="timeStamp" value="228" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>274</line>
+          <line>280</line>
           <option name="timeStamp" value="229" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>279</line>
+          <line>285</line>
           <option name="timeStamp" value="230" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>285</line>
+          <line>291</line>
           <option name="timeStamp" value="232" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>286</line>
+          <line>292</line>
           <option name="timeStamp" value="233" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -1223,57 +1198,57 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>159</line>
+          <line>161</line>
           <option name="timeStamp" value="237" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>160</line>
+          <line>162</line>
           <option name="timeStamp" value="238" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>161</line>
+          <line>163</line>
           <option name="timeStamp" value="239" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>162</line>
+          <line>164</line>
           <option name="timeStamp" value="240" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>163</line>
+          <line>165</line>
           <option name="timeStamp" value="241" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>164</line>
+          <line>166</line>
           <option name="timeStamp" value="242" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>165</line>
+          <line>167</line>
           <option name="timeStamp" value="243" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>167</line>
+          <line>169</line>
           <option name="timeStamp" value="244" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>166</line>
+          <line>168</line>
           <option name="timeStamp" value="245" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>168</line>
+          <line>170</line>
           <option name="timeStamp" value="246" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>169</line>
+          <line>171</line>
           <option name="timeStamp" value="247" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -1617,7 +1592,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>711</line>
+          <line>713</line>
           <properties class="Command.CollectionManager.CollectionManager">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -1653,7 +1628,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Server/ServerMain.java</url>
-          <line>284</line>
+          <line>290</line>
           <properties class="Server.ServerMain">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -1662,7 +1637,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Command/CollectionManager/CollectionManager.java</url>
-          <line>158</line>
+          <line>160</line>
           <properties class="Command.CollectionManager.CollectionManager">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
