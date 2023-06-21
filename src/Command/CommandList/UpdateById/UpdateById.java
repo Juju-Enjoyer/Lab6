@@ -1,4 +1,4 @@
-package Command.CommandList.Insert;
+package Command.CommandList.UpdateById;
 
 import Command.CollectionManager.CollectionManager;
 import Command.CommandList.CommandWithFlat;
@@ -10,58 +10,59 @@ import Exceptions.NoSuchCommandException;
 import PossibleClassInCollection.Flat.Flat;
 
 import java.io.Serializable;
-import java.util.NoSuchElementException;
 
-public class Insert implements Command, Serializable, CommandWithFlat {
+public class UpdateById implements Command, Serializable, CommandWithFlat {
     private CollectionManager cm;
     private String argument;
     private Flat flat;
-    public Insert(CollectionManager cm){
+    public UpdateById(CollectionManager cm){
         this.cm=cm;
     }
-    public Insert(){
-    }
-    @Override
-    public void setArgument(String argument){
-        //filler
-        this.argument=argument;
-    }
+    public UpdateById(){}
 
     @Override
-    public String getArgument(){
-        return argument;
-    }
-    @Override
     public String getName() {
-        return "INSERT";
+        return "UPDATEBYID";
     }
 
     @Override
     public String getDescription() {
-        return "добавить новый элемент с заданным ключом";
+        return "обновить значение элемента коллекции, id которого равен заданному";
     }
+
+    @Override
+    public void setArgument(String argument){
+        //filler
+        this.argument= String.valueOf(argument);
+    }
+
+    @Override
+    public String getArgument() {
+        return argument;
+    }
+
+    @Override
     public CollectionManager getCm() {
         return cm;
     }
 
+    @Override
     public void setCm(CollectionManager cm) {
-        this.cm = cm;
+        this.cm=cm;
     }
 
     @Override
-    public String execute(String args) throws NoSuchElementException, NumberFormatException, IllegalKeyException, IllegalValueException,NoSuchCommandException {
+    public String execute(String args) throws NoSuchCommandException, IllegalKeyException, IllegalValueException {
         try {
-
-
             if (args.isEmpty()) {
                 throw new NoSuchCommandException();
-            } else if (cm.getCollection().containsKey(Long.valueOf(args))) {
-                throw new IllegalKeyException("уже есть квартира с таким номером");
             }
-        }catch (NumberFormatException e){
-            return "стринг не там где надо";
+
+            long key = Long.parseLong(args);
+            return cm.update(this,key);}
+        catch (NumberFormatException e){
+            return ("String там где не надо");
         }
-        return cm.insert(this);
     }
 
     @Override
@@ -74,9 +75,8 @@ public class Insert implements Command, Serializable, CommandWithFlat {
     public Flat getFlat() {
         return flat;
     }
-
     @Override
     public void setFlatScript(Flat flat) {
-this.flat=flat;
+        this.flat=flat;
     }
 }

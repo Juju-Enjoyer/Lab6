@@ -2,6 +2,9 @@ package Command.CommandList.Exit;
 
 import Command.CollectionManager.CollectionManager;
 import Command.CommandProcessor.Command;
+import Exceptions.IllegalKeyException;
+import Exceptions.IllegalValueException;
+import Exceptions.NoSuchCommandException;
 
 import java.io.Serializable;
 
@@ -40,12 +43,12 @@ public class Exit implements Command, Serializable {
     }
 
     @Override
-    public String execute(String args) {
+    public String execute(String args) throws NoSuchCommandException, IllegalValueException, IllegalKeyException {
 //        boolean  res =
 //
 //        return res;
-        cm.exit();
-        return "Bye";
+
+        return cm.exit();
     }
 
 

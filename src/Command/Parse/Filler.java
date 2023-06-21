@@ -3,10 +3,11 @@ package Command.Parse;
 import Exceptions.IllegalValueException;
 import PossibleClassInCollection.Flat.*;
 
+import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.*;
 
-public class Filler {
+public class Filler implements Serializable {
     /*private Hashtable<Integer, Flat> flats;
 
     public Filler(Hashtable<Integer, Flat> flats) {
@@ -116,7 +117,7 @@ public class Filler {
 
 
         while (name.isEmpty());
-        return name;
+        return '"'+name+'"';
        }
 
 

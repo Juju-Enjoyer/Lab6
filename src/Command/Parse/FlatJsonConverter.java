@@ -5,10 +5,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 
+import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Hashtable;
 
-public class FlatJsonConverter {
+public class FlatJsonConverter implements Serializable {
     private Hashtable<Long, Flat> collection;
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(ZonedDateTime.class, new ZonedDateTimeAdapter()).create();
     public FlatJsonConverter(Hashtable<Long, Flat> collection){

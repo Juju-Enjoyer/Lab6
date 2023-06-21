@@ -1,26 +1,28 @@
 package Command.CollectionManager;
 
 import Command.CommandList.Insert.Insert;
+import Command.CommandList.Save.Save;
+import Command.CommandList.UpdateById.UpdateById;
 import Command.CommandProcessor.Command;
 import Command.Parse.Filler;
 import Command.Parse.FlatJsonConverter;
-import Command.Parse.Reader;
 import Exceptions.IllegalKeyException;
 import Exceptions.IllegalValueException;
 import Exceptions.NoSuchCommandException;
 import PossibleClassInCollection.Flat.*;
 
 
-import javax.management.StringValueExp;
 import java.io.*;
 import java.nio.file.AccessDeniedException;
 import java.time.ZonedDateTime;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 public class CollectionManager implements Serializable{
 
     private Map<String, Command> commands;
+    private String allCommand = "";
 
     public CollectionManager(Map<String, Command> commands) {
         this.commands = commands;
@@ -28,7 +30,6 @@ public class CollectionManager implements Serializable{
 
     private final Date dateOfInitialization = new Date();
     private File workFile = new File("");
-    private Reader reader;
     /*Gson gson = new Gson();*/
     private Hashtable<Long, Flat> flats = new Hashtable<>();
 
@@ -64,13 +65,19 @@ public class CollectionManager implements Serializable{
     public long keyRandom() {
         Iterator<Map.Entry<Long, Flat>> iterator = flats.entrySet().iterator();
         long randomKey = ThreadLocalRandom.current().nextLong(0, 1000);
-        while (iterator.hasNext()) {
+       /* while (iterator.hasNext()) {
             Map.Entry<Long, Flat> entry = iterator.next();
             if (entry.getKey() == randomKey) {
                 randomKey = keyRandom();
             }
-        }
+        }*/
         return randomKey;
+    }
+    public boolean chekKey(long key){
+        if (flats.containsKey(key)){
+            return false;
+        }
+        return true;
     }
 
 
@@ -87,10 +94,10 @@ public class CollectionManager implements Serializable{
                     line = reader.readLine();
                     Flat flatsArray = gson.toFlat(line);
                     if (!(flatsArray == null)) {
-                        System.out.println(flatsArray);
+                        if(chekKey(flatsArray.getId())){
                         if (fil.cheker(flatsArray, flats)) {
-                            flats.put(keyRandom(), flatsArray);
-                        }
+                            flats.put(flatsArray.getId(), flatsArray);
+                        }}
                     }
                 }
             } catch (IOException e) {
@@ -106,33 +113,35 @@ public class CollectionManager implements Serializable{
         flats.put(id, pr.parser(id));
     }
 
-    public void show() {
+    public String show() {
        /* for (Integer key: flats.keys()) {
             System.out.println(key+"="+flats.get(key));
         }*/
+        String str="";
+        if (flats.size()==0){
+            return "показывать нечего";
+        }
         for (Iterator<Long> it = flats.keySet().iterator(); it.hasNext(); ) {
             long key = it.next();
-            System.out.println(key + " " + flats.get(key));
+            str+=(key + " " + flats.get(key)+"\n");
         }
+        return str=str.substring(0,str.length()-1)+"конец Show";
     }
 
     public String help() {
-        System.out.println("Help");
-        LinkedList<String> helpMessage = new LinkedList<>();
-        for (Command cmd : commands.values()) helpMessage.add(cmd.getName() + ": " + cmd.getDescription());
-    return "Список доступных команд";
+        String str ="<<<<<<<>>>>>>>>>\n";
+        for (Command cmd : commands.values()) str+=(cmd.getName() + ": " + cmd.getDescription()+"\n");
+    return str=str.substring(0,str.length()-1)+"\n<<<<<<<>>>>>>>>>";
     }
 
-    public String exit() {
+    public String exit() throws NoSuchCommandException, IllegalValueException, IllegalKeyException {
 //        System.out.println("Bye");
 //        boolean result = false;
+        Save save = new Save(this);
+        save.execute("");
         return "Bye";
     }
 
-    public void fullCommadsList(Map<String, Command> commands) {
-        this.commands = commands;
-        this.reader = new Reader(commands);
-    }
 
 
     public String insert(Insert insert) throws  NoSuchElementException{
@@ -144,15 +153,24 @@ public class CollectionManager implements Serializable{
         }catch (NullPointerException e){
             System.err.println("Zalupa");
         }
-        show();
         return "Упешно добавлено";
 
     }
-    public void insert(long key, BufferedReader reader) throws IOException,NoSuchElementException {
-        flats.put(key,scriptFill(reader,getMaxId()+1));
-    }
+    /*public String insert(long key, BufferedReader reader) throws IOException,NoSuchElementException {
+        Flat flatadd;
+        if (flats.containsKey(key)){
+            return "уже есть такая квартира";
+        }else {
+            flatadd = scriptFill(reader,key);
+            if (flatadd==null){
+                return "ошибка в заполнение обьекта flat";
+            }else {flats.put(key,flatadd);
+            return "успешно добавленно";
+            }
+        }
+    }*/
 
-    public Flat scriptFill(BufferedReader reader,Long idWh) throws IOException, NumberFormatException {
+    /*public Flat scriptFill(BufferedReader reader,Long idWh) throws IOException, NumberFormatException {
         long id = idWh;
         String name = "";
         long cooX = 0;
@@ -170,7 +188,7 @@ public class CollectionManager implements Serializable{
         int numberOfLifts = 0;
         int error = 0;
         BufferedReader read = reader;
-        /*try {
+        *//*try {
             key = Long.parseLong(arg);
             if (getCollection().containsKey(Long.valueOf(arg))) {
                 throw new IllegalKeyException("fwf");
@@ -181,7 +199,7 @@ public class CollectionManager implements Serializable{
         } catch (IllegalKeyException e) {
             System.out.println(e.getMessage());
             error+=1;
-        }*/
+        }*//*
 
         try {
             name = read.readLine();
@@ -324,29 +342,41 @@ public class CollectionManager implements Serializable{
             return new Flat(id, name, new Coordinates(cooX, cooY), creationDate, area, numberOfRooms, furnish, view, transport, new House(nameHouse, year, numberOfFloors, numberOfFlatsOnFloor, numberOfLifts));
         }
         return null;
-    }
+    }*/
 
 
-    public boolean update(long idWh) throws IllegalValueException,NoSuchElementException{
+    /*public String update(UpdateById update,long idWh) throws IllegalValueException,NoSuchElementException{
         Iterator<Map.Entry<Long, Flat>> iterator = flats.entrySet().iterator();
-        Filler pr = new Filler();
+        Flat flat = update.getFlat();
+
         try {
             while (iterator.hasNext()) {
                 Map.Entry<Long, Flat> entry = iterator.next();
                 if (idWh == entry.getValue().getId()) {
-                    Flat flat = pr.parser(idWh);
                     flats.put(entry.getKey(), flat);
-                    return true;
+                    return "успешно обнавленно";
                 }
             }
             throw new IllegalKeyException("нет такого id");
         } catch (IllegalKeyException e) {
-            System.out.println(e.getMessage());
+            return (e.getMessage());
         }
-        return true;
+    }*/
+
+    public String update(UpdateById update, long idWh) throws IllegalValueException, NoSuchElementException, IllegalKeyException {
+        Optional<Map.Entry<Long, Flat>> optionalEntry = flats.entrySet()
+                .stream()
+                .filter(entry -> idWh == entry.getValue().getId())
+                .findFirst();
+
+        return optionalEntry.map(entry -> {
+            flats.put(entry.getKey(), update.getFlat());
+            return "успешно обновлено";
+        }).orElseThrow(() -> new IllegalKeyException("нет такого id"));
+
     }
 
-    public boolean update(Long idwh, BufferedReader reader) throws IOException, NumberFormatException,NoSuchElementException {
+   /* public String update(Long idwh, BufferedReader reader) throws IOException, NumberFormatException,NoSuchElementException {
         long id = idwh;
         Iterator<Map.Entry<Long, Flat>> iterator = flats.entrySet().iterator();
         try {
@@ -354,7 +384,7 @@ public class CollectionManager implements Serializable{
                 Map.Entry<Long, Flat> entry = iterator.next();
                 if (id == entry.getValue().getId()) {
                     flats.put(entry.getKey(),scriptFill(reader,idwh));
-                    return true;
+                    return "";
                 }
             }
             throw new IllegalKeyException("нет такого id");
@@ -362,27 +392,51 @@ public class CollectionManager implements Serializable{
             System.out.println(e.getMessage());
         }
 
-        return true;
-    }
+        return "";
+    }*/
+   /*public String update(Long idwh, BufferedReader reader) throws IOException, NumberFormatException, NoSuchElementException, IllegalKeyException {
+       Optional<Map.Entry<Long, Flat>> entryOptional = flats.entrySet()
+               .stream()
+               .filter(entry -> idwh.equals(entry.getValue().getId()))
+               .findFirst();
 
-    public void removeAnyByNumberOfRooms(int rooms) {
+       if (entryOptional.isPresent()) {
+           Map.Entry<Long, Flat> entry = entryOptional.get();
+           flats.put(entry.getKey(), scriptFill(reader, idwh));
+           return "";
+       } else {
+           throw new IllegalKeyException("нет такого id");
+       }
+   }*/
+
+    /*public String removeAnyByNumberOfRooms(int rooms) {
         Iterator<Map.Entry<Long, Flat>> iterator = flats.entrySet().iterator();
-        try {
             while (iterator.hasNext()) {
                 Map.Entry<Long, Flat> entry = iterator.next();
                 if (rooms == entry.getValue().getNumberOfRooms()) {
                     flats.remove(entry.getKey());
-                    System.out.println("была удаленна последня добавленная квартира с количеством комнат == " + rooms);
-                    break;
+                    return ("была удаленна последня добавленная квартира с количеством комнат == " + rooms);
                 }
-                throw new IllegalKeyException("нет квартир с таким количеством квартир");
             }
-        } catch (IllegalKeyException e) {
-            System.out.println(e.getMessage());
+            return ("нет квартир с таким количеством квартир");
+        }*/
+    public String removeAnyByNumberOfRooms(int rooms) {
+        Optional<Map.Entry<Long, Flat>> entryOptional = flats.entrySet()
+                .stream()
+                .filter(entry -> rooms == entry.getValue().getNumberOfRooms())
+                .findFirst();
+
+        if (entryOptional.isPresent()) {
+            Map.Entry<Long, Flat> entry = entryOptional.get();
+            flats.remove(entry.getKey());
+            return "была удалена последняя добавленная квартира с количеством комнат == " + rooms;
+        } else {
+            return "нет квартир с таким количеством комнат";
         }
     }
 
-    public void save(String filepath) {
+
+    public String save(String filepath) {
 
         Iterator<Map.Entry<Long, Flat>> iterator = flats.entrySet().iterator();
         try {
@@ -398,14 +452,15 @@ public class CollectionManager implements Serializable{
             }
             fos.close();
         } catch (FileNotFoundException e) {
-            System.out.println("FileNotFound");
+            return("FileNotFound");
         } catch (AccessDeniedException e) {
-            System.out.println("отказано в доступе попробуйте другой файл");
+            return("отказано в доступе попробуйте другой файл");
         } catch (IOException e) {
         }
+        return "сохранено в "+filepath;
     }
 
-    public void save(File file) {
+    public String save(File file) {
         Iterator<Map.Entry<Long, Flat>> iterator = flats.entrySet().iterator();
         try {
             FileOutputStream fos = new FileOutputStream(file);
@@ -421,13 +476,14 @@ public class CollectionManager implements Serializable{
             }
             fos.close();
         } catch (AccessDeniedException e) {
-            throw new RuntimeException(e);
+            return("отказано в доступе попробуйте другой файл");
         } catch (IOException e) {
         }
 
+        return "сохранено в "+file;
     }
 
-    public void save() {
+    public String save() {
         Iterator<Map.Entry<Long, Flat>> iterator = flats.entrySet().iterator();
         try {
             String file = String.valueOf(workFile);
@@ -443,12 +499,13 @@ public class CollectionManager implements Serializable{
             }
             fos.close();
         } catch (AccessDeniedException e) {
-            throw new RuntimeException(e);
+            return("отказано в доступе попробуйте другой файл");
         } catch (IOException e) {
         }
+        return "сохранено";
     }
 
-    public void countLessThanNumberOfRooms(int rooms) {
+    /*public String countLessThanNumberOfRooms(int rooms) {
         int count = 0;
         Iterator<Map.Entry<Long, Flat>> iterator = flats.entrySet().iterator();
         try {
@@ -461,14 +518,30 @@ public class CollectionManager implements Serializable{
             if (count == 0) {
                 throw new IllegalKeyException("количество квартир с комнатами меньше " + rooms + ", равно 0");
             }
-            System.out.println("количество квартир с количеством комнат меньше " + rooms + ", равно " + count);
+            return  ("количество квартир с количеством комнат меньше " + rooms + ", равно " + count);
         } catch (IllegalKeyException e) {
-            System.out.println(e.getMessage());
+            return (e.getMessage());
         }
+    }*/
+    public String countLessThanNumberOfRooms(int rooms) {
+            long count = flats.entrySet()
+                    .stream()
+                    .filter(entry -> entry.getValue().getNumberOfRooms() < rooms)
+                    .count();
+
+            if (count == 0) {
+                return "количество квартир с комнатами меньше " + rooms + ", равно 0";
+            } else {
+                return "количество квартир с количеством комнат меньше " + rooms + ", равно " + count;
+            }
     }
 
-    public void removeKey(long key) {
+    public String removeKey(long key) {
+        if (flats.get(key)==null){
+            return "нет такого ключа";
+        }
         flats.remove(key);
+        return "успешно удаленно";
     }
 
 
@@ -481,32 +554,58 @@ public class CollectionManager implements Serializable{
         }
     }
 
-    public void removeGreater() throws IllegalValueException {
-        Filler pr = new Filler();
-        Flat newflat = pr.parser(getMaxId());
+    /*public String removeGreater(Flat flat) throws IllegalValueException {
+        *//*Filler pr = new Filler();
+        Flat newflat = pr.parser(getMaxId());*//*
+        Flat newFlat = flat;
         int flatssize = flats.size();
+        String str ="";
         Iterator<Map.Entry<Long, Flat>> iterator = flats.entrySet().iterator();
         try {
             while (flats.size()!=0) {
                 Map.Entry<Long, Flat> entry = iterator.next();
-                if (0 > newflat.compareTo(entry.getValue())) {
+                if (0 > newFlat.compareTo(entry.getValue())) {
                     iterator.remove();
-                    System.out.println(entry.getKey()+ " удаленно");
+                    str +=(entry.getKey()+ " удаленно"+"\n");
                 }
             }
             if (flatssize == flats.size()) {
                 throw new IllegalKeyException("нет квартир лучше");
             }
+            return str.substring(0,str.length()-1);
         } catch (IllegalKeyException e) {
-            System.out.println(e.getMessage());
+            return(e.getMessage());
         }
 
     }
+*/
 
 
+    public String removeGreater(Flat flat) throws IllegalValueException {
+        int flatssize = flats.size();
+        try {
+
+        List<Long> removedKeys = flats.entrySet().stream()
+                .filter(entry -> flat.compareTo(entry.getValue()) < 0)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        removedKeys.forEach(key -> flats.remove(key));
+
+        if (flats.size() == flatssize) {
+            throw new IllegalKeyException("нет квартир лучше");
+        }
+
+        return removedKeys.stream()
+                .map(key -> key + " удаленно")
+                .collect(Collectors.joining("\n"));}
+        catch (IllegalKeyException e){
+            return(e.getMessage());
+        }
+    }
 
 
-    public void removeGreater(BufferedReader reader) throws IllegalValueException, IOException {
+    /*public String removeGreater(BufferedReader reader) throws IllegalValueException, IOException {
         Flat newflat = scriptFill(reader,1L);
         int flatssize = flats.size();
         Iterator<Map.Entry<Long, Flat>> iterator = flats.entrySet().iterator();
@@ -524,31 +623,55 @@ public class CollectionManager implements Serializable{
         } catch (IllegalKeyException e) {
             System.out.println(e.getMessage());
         }
+return "";
+    }*/
 
-    }
-
-    public void removeLower() throws IllegalValueException {
-        Filler pr = new Filler();
-        Flat newflat = pr.parser(getMaxId());
+    /*public String removeLower(Flat flat) throws IllegalValueException {
+//        Filler pr = new Filler();
+//        Flat newflat = pr.parser(getMaxId());
+        Flat newFlat = flat;
         int flatssize = flats.size();
+        String str ="";
         Iterator<Map.Entry<Long, Flat>> iterator = flats.entrySet().iterator();
         try {
-            while (iterator.hasNext()) {
+            while (flats.size()!=0) {
                 Map.Entry<Long, Flat> entry = iterator.next();
-                if (0 < newflat.compareTo(entry.getValue())) {
+                if (0 < newFlat.compareTo(entry.getValue())) {
                     iterator.remove();
-                    System.out.println(entry.getKey()+ " удаленно");
+                    str +=(entry.getKey()+ " удаленно"+"\n");
                 }
             }
             if (flatssize == flats.size()) {
-                throw new IllegalKeyException("нет квартир хуже");
+                throw new IllegalKeyException("нет квартир лучше");
             }
+            return str.substring(0,str.length()-1);
         } catch (IllegalKeyException e) {
-            System.out.println(e.getMessage());
+            return(e.getMessage());
         }
 
+    }*/
+    public String removeLower(Flat flat) throws IllegalValueException {
+        int flatssize = flats.size();
+        String[] str = {""};
+        try {
+            flats.entrySet().stream()
+                    .filter(entry -> flat.compareTo(entry.getValue()) > 0)
+                    .map(Map.Entry::getKey)
+                    .forEach(key -> {
+                        flats.remove(key);
+                        str[0] += key + " удаленно" + "\n";
+                    });
+            if (flatssize == flats.size()) {
+                throw new IllegalKeyException("нет квартир лучше");
+            }
+            return str[0].substring(0, str[0].length() - 1);
+        } catch (IllegalKeyException e) {
+            return e.getMessage();
+        }
     }
-    public void removeLower(BufferedReader reader) throws IllegalValueException, IOException {
+
+
+    /*public String removeLower(BufferedReader reader) throws IllegalValueException, IOException {
         Flat newflat = scriptFill(reader,1L);
         int flatssize = flats.size();
         Iterator<Map.Entry<Long, Flat>> iterator = flats.entrySet().iterator();
@@ -567,9 +690,10 @@ public class CollectionManager implements Serializable{
             System.out.println(e.getMessage());
         }
 
-    }
+        return "";
+    }*/
 
-    public void sort() {
+    /*public String sort() {
         Iterator<Map.Entry<Long, Flat>> iterator = flats.entrySet().iterator();
         ArrayList<House> list = new ArrayList<>();
         while (iterator.hasNext()) {
@@ -577,28 +701,35 @@ public class CollectionManager implements Serializable{
             list.add(entry.getValue().getHouse());
         }
         Collections.sort(list);
-        System.out.println(list);
+        return String.valueOf(list);
+    }*/
 
+    public String sort() {
+        List<House> sortedHouses = flats.values()
+                .stream()
+                .map(Flat::getHouse)
+                .sorted()
+                .collect(Collectors.toList());
 
+        return String.valueOf(sortedHouses);
     }
 
-    public void clear() {
+    public String clear() {
         flats.clear();
+        return "Коллекция отчищена";
     }
 
-    public void info() {
-        System.out.println("Collection type: " + flats.getClass().getName() + "\n"
+    public String info() {
+        return ("Collection type: " + flats.getClass().getName() + "\n"
                 + "Date of initialization: " + dateOfInitialization + "\n"
                 + "Collection size: " + flats.size());
     }
 
-    public void history() {
-        System.out.println(reader.getAllCommands());
+    public String history() {
+        String str = allCommand.substring(0,allCommand.length()-1);
+        return str;
     }
 
-    public String[] separator(String... agrs) throws NoSuchCommandException {
-        return reader.separator();
-    }
 
     public Map<String, Command> getCommands() {
         return commands;
@@ -614,4 +745,7 @@ public class CollectionManager implements Serializable{
         }
         return true;
     }
+public void historyFiller(String command){
+        allCommand+= command+"\n";
+}
 }

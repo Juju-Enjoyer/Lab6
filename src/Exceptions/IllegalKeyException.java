@@ -1,6 +1,8 @@
 package Exceptions;
 
-public class IllegalKeyException extends Exception{
+import java.io.Serializable;
+
+public class IllegalKeyException extends Exception implements Serializable {
     private final String message;
 
     public IllegalKeyException(String message) {

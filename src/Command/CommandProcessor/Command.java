@@ -6,10 +6,12 @@ import Exceptions.IllegalValueException;
 import Exceptions.NoSuchCommandException;
 
 public interface Command<T> {
+    CollectionManager cm = null;
+    String argument = null;
     String getName();
     String getDescription();
 
-    void setArgument (String argument);
+    void setArgument (String argument) throws NoSuchCommandException;
 
     String getArgument();
     CollectionManager getCm();
